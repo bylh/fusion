@@ -10,6 +10,7 @@
 #include <pcl/filters/crop_box.h>
 #include <pcl/filters/crop_hull.h>
 #include <pcl/surface/concave_hull.h>
+#include <pcl/common/transforms.h>
 
 pcl::PointXYZ getEndPoint(pcl::PointXYZ statPoint, float yaw, float length)
 {

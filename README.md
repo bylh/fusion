@@ -112,3 +112,231 @@ c)由于相机的制造工艺不能完全符合理论值的预期，所以投影
 ## 点云融合实例代码讲解  
 1.云融合示例  
 2.3D框投影示例    
+
+## 项目运行指南
+
+### 环境要求
+
+#### 系统要求
+- **操作系统**: macOS, Linux, Windows
+- **Python版本**: Python 3.6+
+- **C++编译器**: GCC 7+, Clang 5+, MSVC 2017+
+
+#### 依赖库
+
+**Python依赖:**
+```bash
+pip install numpy
+pip install Pillow
+```
+
+**C++依赖:**
+- PCL (Point Cloud Library) 1.8+
+- Eigen3
+- CMake 3.5+
+- OpenGL (用于3D可视化)
+
+### 环境安装
+
+#### macOS 环境安装
+
+1. **安装Homebrew** (如果未安装):
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+2. **安装Python依赖**:
+```bash
+pip3 install numpy Pillow
+```
+
+3. **安装C++依赖**:
+```bash
+# 安装PCL库
+brew install pcl
+
+# 安装CMake
+brew install cmake
+
+# 安装Eigen3
+brew install eigen
+```
+
+#### Linux 环境安装 (Ubuntu/Debian)
+
+1. **安装Python依赖**:
+```bash
+sudo apt update
+sudo apt install python3-pip
+pip3 install numpy Pillow
+```
+
+2. **安装C++依赖**:
+```bash
+sudo apt install libpcl-dev
+sudo apt install cmake
+sudo apt install libeigen3-dev
+```
+
+#### Windows 环境安装
+
+1. **安装Python依赖**:
+```bash
+pip install numpy Pillow
+```
+
+2. **安装C++依赖**:
+- 下载并安装 [PCL All-in-One](https://github.com/PointCloudLibrary/pcl/releases)
+- 下载并安装 [CMake](https://cmake.org/download/)
+- 下载并安装 [Visual Studio](https://visualstudio.microsoft.com/) (包含MSVC编译器)
+
+### 模块运行指南
+
+#### 1. 旋转和平移模块 (`旋转和平移/`)
+
+**功能**: 演示3D点的旋转和平移变换，计算外部参数矩阵
+
+**运行方式**:
+```bash
+cd 旋转和平移
+python3 demo.py
+```
+
+**输出**: 显示计算得到的变换矩阵
+
+#### 2. 点云投影过程模块 (`点云投影过程/`)
+
+**功能**: 将3D点云投影到2D图像上，可视化3D边界框在图像上的投影
+
+**运行方式**:
+```bash
+cd 点云投影过程
+python3 demo.py 0_1595574171.166545.jpeg label.json
+```
+
+**参数说明**:
+- `0_1595574171.166545.jpeg`: 输入图像文件
+- `label.json`: 包含3D标注信息的JSON文件
+
+**输出**: 显示带有3D边界框投影的图像
+
+#### 3. 融合参数计算过程模块 (`融合参数计算过程/`)
+
+**功能**: 计算点云融合的变换矩阵，将点云数据投影到图像上并显示
+
+**运行方式**:
+```bash
+cd 融合参数计算过程
+python3 demo.py
+```
+
+**输出**: 
+- 控制台输出变换矩阵
+- 显示带有投影点云点的图像
+
+#### 4. 辅助演示使用模块 (`辅助演示使用/`)
+
+**功能**: 使用PCL库进行3D可视化，展示坐标系和3D框
+
+**运行方式**:
+
+1. **编译项目**:
+```bash
+cd 辅助演示使用
+mkdir -p build && cd build
+cmake ..
+make
+```
+
+2. **运行程序**:
+```bash
+./main
+```
+
+**输出**: 打开3D可视化窗口，显示:
+- 三个坐标轴箭头 (红色X轴、绿色Y轴、蓝色Z轴)
+- 3D立方体框 (线框模式)
+- 交互式3D界面
+
+**操作说明**:
+- 鼠标左键: 旋转视角
+- 鼠标右键: 平移视角
+- 鼠标滚轮: 缩放
+- 按 `q` 或关闭窗口退出
+
+### 故障排除
+
+#### 常见问题
+
+1. **PCL库找不到**
+   - 确保正确安装了PCL库
+   - 检查CMakeLists.txt中的PCL版本要求
+
+2. **编译错误**
+   - 确保CMake版本 >= 3.5
+   - 检查所有依赖库是否正确安装
+
+3. **Python模块导入错误**
+   - 确保安装了所需的Python包: `pip install numpy Pillow`
+
+4. **3D窗口无法显示**
+   - 确保系统支持OpenGL
+   - 检查显卡驱动是否最新
+
+#### 调试技巧
+
+1. **查看详细编译信息**:
+```bash
+make VERBOSE=1
+```
+
+2. **检查PCL安装**:
+```bash
+pkg-config --modversion pcl_common
+```
+
+3. **检查Python包版本**:
+```bash
+python3 -c "import numpy; print(numpy.__version__)"
+python3 -c "import PIL; print(PIL.__version__)"
+```
+
+### 项目结构说明
+
+```
+fusion/
+├── README.md                    # 项目说明文档
+├── 旋转和平移/                  # 旋转平移变换演示
+│   ├── demo.py                 # Python演示代码
+│   ├── main.cpp                # C++演示代码
+│   └── CMakeLists.txt          # CMake构建文件
+├── 点云投影过程/                # 点云投影演示
+│   ├── demo.py                 # 投影演示代码
+│   ├── label.json              # 3D标注数据
+│   └── 0_1595574171.166545.jpeg # 示例图像
+├── 融合参数计算过程/            # 融合参数计算
+│   ├── demo.py                 # 参数计算代码
+│   ├── readme.txt              # 参数说明
+│   └── 0_1595574171.166545.txt # 点云数据
+├── 辅助演示使用/                # 3D可视化演示
+│   ├── main.cpp                # 可视化代码
+│   └── CMakeLists.txt          # CMake构建文件
+└── docs/                       # 文档图片
+    ├── pointcloud_format.png   # 点云格式说明
+    ├── car.png                 # 设备示意图
+    └── ...                     # 其他说明图片
+```
+
+### 学习建议
+
+1. **按顺序学习**: 建议按照模块顺序学习，从基础理论到实际应用
+2. **理论结合实践**: 先理解README中的理论部分，再运行对应的演示代码
+3. **参数调优**: 尝试修改代码中的参数，观察结果变化
+4. **扩展应用**: 基于现有代码，尝试应用到自己的项目中
+
+### 参考资料
+
+- [PCL官方文档](https://pointclouds.org/documentation/)
+- [张氏标定法详解](https://www.cnblogs.com/wangguchangqing/p/8335131.html)
+- [欧拉角万向锁问题](https://zhuanlan.zhihu.com/p/346718090)
+- [CMake官方文档](https://cmake.org/documentation/)

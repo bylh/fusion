@@ -1,0 +1,183 @@
+# 点云融合项目 .gitignore 文件
+
+# ===== C++ 构建文件 =====
+# CMake 构建目录
+build/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+
+# 编译输出文件
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.dylib
+*.so
+*.dll
+*.a
+*.lib
+
+# 调试文件
+*.dSYM/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ===== Python 相关 =====
+# Python 字节码
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Python 虚拟环境
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# Python 包
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+bin/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib/
+lib64/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyCharm
+.idea/
+
+# ===== 操作系统相关 =====
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ===== IDE 和编辑器 =====
+# Visual Studio
+.vs/
+*.vcxproj.user
+*.vcxproj.filters
+*.vcxproj.user
+*.vcxproj.user.filters
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ===== 项目特定文件 =====
+# 临时文件
+*.tmp
+*.temp
+*.log
+*.bak
+*.backup
+
+# 数据文件（根据需要调整）
+# *.pcd
+# *.ply
+# *.txt
+# *.json
+# *.jpeg
+# *.jpg
+# *.png
+
+# 配置文件（如果需要忽略）
+# config.ini
+# settings.json
+
+# ===== 其他 =====
+# 压缩文件
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# 文档临时文件
+*.docx~
+*.xlsx~
+*.pptx~
+
+# 备份文件
+*.orig
+*.rej
+*.old
+
+# 测试覆盖率
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/ 

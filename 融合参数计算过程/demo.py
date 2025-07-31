@@ -45,7 +45,7 @@ for line in file:
 
     pin = [[float(x), float(y), float(z), 1]]
 
-    imgPoint = np.matmul(Trans, np.mat(pin).T).T
+    imgPoint = np.matmul(Trans, np.asmatrix(pin).T).T
 
     xc = imgPoint[0,0]
     yc = imgPoint[0,1]

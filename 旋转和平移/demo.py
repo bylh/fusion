@@ -46,7 +46,7 @@ T = np.array([
     [0,0,0,1]
 ])
 
-R = np.mat(Rx) * np.mat(Ry) * np.mat(Rz)
-Tr = np.mat(T) * np.mat(R)
+R = np.asmatrix(Rx) * np.asmatrix(Ry) * np.asmatrix(Rz)
+Tr = np.asmatrix(T) * np.asmatrix(R)
 
 print(Tr)

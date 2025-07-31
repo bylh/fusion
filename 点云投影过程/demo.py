@@ -155,17 +155,17 @@ def vis(imgPath, label3DPath):
                 [0, 0, 0, 1]
             ]
 
-            R = np.mat(Rx) * np.mat(Ry) * np.mat(Rz)
-            Rt = np.mat(t) * np.mat(R)
+            R = np.asmatrix(Rx) * np.asmatrix(Ry) * np.asmatrix(Rz)
+            Rt = np.asmatrix(t) * np.asmatrix(R)
 
-            point3D1 = np.matmul(Rt, np.mat(p1).T).T
-            point3D2 = np.matmul(Rt, np.mat(p2).T).T
-            point3D3 = np.matmul(Rt, np.mat(p3).T).T
-            point3D4 = np.matmul(Rt, np.mat(p4).T).T
-            point3D5 = np.matmul(Rt, np.mat(p5).T).T
-            point3D6 = np.matmul(Rt, np.mat(p6).T).T
-            point3D7 = np.matmul(Rt, np.mat(p7).T).T
-            point3D8 = np.matmul(Rt, np.mat(p8).T).T
+            point3D1 = np.matmul(Rt, np.asmatrix(p1).T).T
+            point3D2 = np.matmul(Rt, np.asmatrix(p2).T).T
+            point3D3 = np.matmul(Rt, np.asmatrix(p3).T).T
+            point3D4 = np.matmul(Rt, np.asmatrix(p4).T).T
+            point3D5 = np.matmul(Rt, np.asmatrix(p5).T).T
+            point3D6 = np.matmul(Rt, np.asmatrix(p6).T).T
+            point3D7 = np.matmul(Rt, np.asmatrix(p7).T).T
+            point3D8 = np.matmul(Rt, np.asmatrix(p8).T).T
 
             Trans = np.array([
                 [899.8625997012127, -1989.3744233888965, -64.49265152342986, 174.36621378540235],
@@ -175,14 +175,14 @@ def vis(imgPath, label3DPath):
             ])
 
             #是否存在图片内的点
-            pointImage1 = np.matmul(Trans, np.mat(point3D1).T).T
-            pointImage2 = np.matmul(Trans, np.mat(point3D2).T).T
-            pointImage3 = np.matmul(Trans, np.mat(point3D3).T).T
-            pointImage4 = np.matmul(Trans, np.mat(point3D4).T).T
-            pointImage5 = np.matmul(Trans, np.mat(point3D5).T).T
-            pointImage6 = np.matmul(Trans, np.mat(point3D6).T).T
-            pointImage7 = np.matmul(Trans, np.mat(point3D7).T).T
-            pointImage8 = np.matmul(Trans, np.mat(point3D8).T).T
+            pointImage1 = np.matmul(Trans, np.asmatrix(point3D1).T).T
+            pointImage2 = np.matmul(Trans, np.asmatrix(point3D2).T).T
+            pointImage3 = np.matmul(Trans, np.asmatrix(point3D3).T).T
+            pointImage4 = np.matmul(Trans, np.asmatrix(point3D4).T).T
+            pointImage5 = np.matmul(Trans, np.asmatrix(point3D5).T).T
+            pointImage6 = np.matmul(Trans, np.asmatrix(point3D6).T).T
+            pointImage7 = np.matmul(Trans, np.asmatrix(point3D7).T).T
+            pointImage8 = np.matmul(Trans, np.asmatrix(point3D8).T).T
 
             points = [pointImage1, pointImage2, pointImage3, pointImage4, pointImage5, pointImage6, pointImage7, pointImage8]
 
@@ -226,3 +226,5 @@ if __name__ == "__main__":
     imgPath = sys.argv[1]
     label3DPath = sys.argv[2]
     vis(imgPath, label3DPath)
+
+# python3 demo.py 0_1595574171.166545.jpeg label.json
